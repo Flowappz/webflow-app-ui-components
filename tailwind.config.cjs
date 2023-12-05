@@ -55,10 +55,10 @@ module.exports = {
             'purpleBorder': 'var(--purpleBorder)',
 
         },
-        fontSize:{
-            'size-small':'--font-size-small',
-            'size-large':'--font-size-large',
-        },
+        // fontSize:{
+        //     'size-small':'--font-size-small',
+        //     'size-large':'--font-size-large',
+        // },
         letterSpacing:{
             'small-letter-spacing':'--font-size-small-letter-spacing'
         },
