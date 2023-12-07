@@ -67,9 +67,9 @@
     --purpleBorder: #875FFD;
 
     /* Box shadows for buttons and inputs */
-    --boxShadows-action-colored: 0px 0.5px 1px 0px rgba(0, 0, 0, 0.8),0px 0.5px 0.5px 0px rgba(255, 255, 255, 0.20) inset;
-    --boxShadows-action-secondary: 0px 0.5px 1px rgba(0, 0, 0, 0.8),inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.12);
-    --boxShadows-input-inner: 0px 1px 1px -1px rgba(0, 0, 0, 0.13) inset,0px 3px 3px -3px rgba(0, 0, 0, 0.17) inset,0px 4px 4px -4px rgba(0, 0, 0, 0.17) inset,0px 8px 8px -8px rgba(0, 0, 0, 0.17) inset,0px 12px 12px -12px rgba(0, 0, 0, 0.13) inset,0px 16px 16px -16px rgba(0, 0, 0, 0.13) inset;
+    --boxShadows-action-colored: 0px 0.5px 1px 0px rgba(0, 0, 0, 0.8), 0px 0.5px 0.5px 0px rgba(255, 255, 255, 0.20) inset;
+    --boxShadows-action-secondary: 0px 0.5px 1px rgba(0, 0, 0, 0.8), inset 0px 0.5px 0.5px rgba(255, 255, 255, 0.12);
+    --boxShadows-input-inner: 0px 1px 1px -1px rgba(0, 0, 0, 0.13) inset, 0px 3px 3px -3px rgba(0, 0, 0, 0.17) inset, 0px 4px 4px -4px rgba(0, 0, 0, 0.17) inset, 0px 8px 8px -8px rgba(0, 0, 0, 0.17) inset, 0px 12px 12px -12px rgba(0, 0, 0, 0.13) inset, 0px 16px 16px -16px rgba(0, 0, 0, 0.13) inset;
 
     --boxShadows-menu: 0px 0.5px 0.5px 0px rgba(255, 255, 255, 0.12) inset, 0px 12px 24px 8px rgba(0, 0, 0, 0.04), 0px 8px 16px 4px rgba(0, 0, 0, 0.04), 0px 4px 8px 2px rgba(0, 0, 0, 0.04), 0px 2px 6px 0px rgba(0, 0, 0, 0.04), 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
 
@@ -88,8 +88,6 @@
 }
 
 
-
-
 body {
     margin: 0;
     display: flex;
@@ -99,20 +97,27 @@ body {
     background-color: #2E2E2E;
 }
 
-
-
-
-
-
-
-
-
-/* Custom css */
-.default-bg-gradient {
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.10) 100%);
-
+/*Switch Custom Style*/
+.switch-input:checked + .switch-slider {
+    @apply before:translate-x-[12px]
 }
 
-.default-box-shadow{
-    box-shadow: 0 0.5px 0.5px 0 rgba(255, 255, 255, 0.12) inset, 0 0.5px 1px 0 #000;
+.switch-box:has(.switch-input:enabled:not(:checked)) {
+    @apply hover:bg-[#FFFFFF30] hover:border-[transparent]
 }
+
+.switch-box:has(.switch-input:checked) {
+    @apply bg-[#006ACC] border-[#006ACC]
+}
+
+.switch-box:has(.switch-input:disabled) {
+    @apply opacity-[0.4] cursor-not-allowed
+}
+
+.switch-box:has(.switch-input:focus) {
+    @apply outline outline-1 outline-blueBorder
+}
+/*Switch Custom Style*/
+
+
+
