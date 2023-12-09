@@ -3,8 +3,12 @@ import {IconButton} from "./components";
 import {Textarea} from './components';
 import {Input} from "./components";
 import Spinner from "./components/Spinner/Spinner";
-import {Divider} from "./components/Divider/Divider";
-import {Switch} from "./components/Switch/Switch";
+import {Divider} from "./components";
+import {Switch} from "./components";
+import {Accordion} from "./components/Accordion/Accordion";
+import {Note} from "./components";
+import {EmptyState} from "./components/EmptyState/EmptyState";
+import {Radio} from "./components/Radio/Radio";
 
 
 function App() {
@@ -60,10 +64,45 @@ function App() {
             <Spinner size={'lg'}/>
 
 
-            <p>vertical</p>
+            <h2 className='text-3xl'>Switch</h2>
+            <p>Default</p>
+            <Switch switchId={'default'}/>
 
-            <Switch name={'switch'}/>
+            <p className={'p-4'}>isChecked</p>
+            <Switch switchId={'isChecked'} checked/>
 
+            <h2 className='text-3xl'>Note</h2>
+            <p className={'p-4'}>Default</p>
+            <Note title={'Title'} description={'this is description'} linkLabel={'label'}/>
+            <p className={'p-4'}>ghost</p>
+            <Note title={'Title'} variant={'ghost'} description={'this is description'} linkLabel={'label'}/>
+            <p className={'p-4'}>success</p>
+            <Note title={'Title'} variant={'success'} description={'this is description'} linkLabel={'label'}/>
+            <p className={'p-4'}>primary</p>
+            <Note title={'Title'} variant={'primary'} description={'this is description'} linkLabel={'label'}/>
+            <p className={'p-4'}>danger</p>
+            <Note title={'Title'} variant={'danger'} description={'this is description'} linkLabel={'label'}/>
+
+
+            <div className={'bg-[#000] p-7'}>
+                <h2 className='text-3xl'>EmptyState</h2>
+                <p>Default</p>
+                <EmptyState title={'Title'} body={'this is description'} label={'Next'}/>
+
+                <p>isNested</p>
+                <EmptyState title={'Title'} isNested body={'this is description'} label={'Next'}/>
+            </div>
+
+                <h2 className='text-3xl'>Radio</h2>
+            <Radio id={'radio'} label={'label'} checked/>
+            <p className={'p-1'}></p>
+            <Radio id={'radio2'}/>
+            <p className={'p-1'}></p>
+            <Radio id={'radio3'} isError/>
+            <p className={'p-1'}></p>
+            <Radio id={'radio4'} isError checked/>
+            <p className={'p-1'}></p>
+            <Radio id={'radio4'} checked disabled/>
         </div>
     );
 }

@@ -120,4 +120,25 @@ body {
 /*Switch Custom Style*/
 
 
+/* Radio Custom Style */
+.radio-box:has(.radio-input:checked) {
+    @apply bg-[#006ACC] border-[#006ACC]
+}
+
+.radio-error:has(.radio-input:checked){
+    @apply bg-redBackground border-redBackground
+}
+.radio-box:has(.radio-input:enabled:not(:checked)){
+    @apply hover:bg-background2
+}
+.radio-input:checked ~ .radio-dot{
+    @apply bg-actionPrimaryText
+}
+.radio-box:has(.radio-input:focus) {
+    @apply outline outline-1 outline-blueBorder
+}
+.radio-box:has(.radio-input:disabled) {
+    @apply opacity-[0.4] cursor-not-allowed
+}
+/* Radio Custom Style */
 
