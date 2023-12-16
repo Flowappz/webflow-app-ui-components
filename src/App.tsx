@@ -11,19 +11,22 @@ import {EmptyState} from "./components";
 import {Radio} from "./components";
 import ColorInput from "./components/ColorPicker/ColorPicker";
 import {SelectInput} from "./components/SelectInput/SelectInput";
-import {createLogger} from "vite";
+
+import {Avatar} from "./components";
+import {AvatarGroup} from "./components/Avatar/Avatar";
+
 
 const content = [
     {
-    content:'option 1',
-    value:'1',
-},   {
-    content:'option 2',
-    value:'2',
-},   {
-    content:'option 3',
-    value:'3',
-},
+        content: 'option 1',
+        value: '1',
+    }, {
+        content: 'option 2',
+        value: '2',
+    }, {
+        content: 'option 3',
+        value: '3',
+    },
 ]
 
 
@@ -109,7 +112,7 @@ function App() {
                 <EmptyState title={'Title'} isNested body={'this is description'} label={'Next'}/>
             </div>
 
-                <h2 className='text-3xl'>Radio</h2>
+            <h2 className='text-3xl'>Radio</h2>
             <Radio id={'radio'} label={'label'} checked/>
             <p className={'p-1'}></p>
             <Radio id={'radio2'}/>
@@ -122,10 +125,26 @@ function App() {
 
             <p className={'p-1'}></p>
             <p> Color Picker</p>
-            <ColorInput color={'rgb(0,0,0)'} onChange={(color:any)=>console.log(color)}/>
+            <ColorInput color={'rgb(0,0,0)'} onChange={(color: any) => console.log(color)}/>
             <p className={'p-1'}></p>
             <p>Select Dropdown</p>
-            <SelectInput label={'select'} placeholder={'hello'} defaultValue={content[0].value} options={content} onChange={(e:any)=>console.log(e.target.value)} />
+            <SelectInput label={'select'} placeholder={'hello'} defaultValue={content[0].value} options={content}
+                         onChange={(e: any) => console.log(e.target.value)}/>
+
+            <p>Image Avatar</p>
+            <Avatar src={'https://avatars.githubusercontent.com/u/103986313?v=4'} name={'Sakil Ahmed'}/>
+
+            <p>Text Avatar</p>
+            <Avatar src={''} name={'Sakil Ahmed'}/>
+
+
+            <p>Avatar Group</p>
+            <AvatarGroup>
+                <Avatar src={'https://avatars.githubusercontent.com/u/103986313?v=4'} name={'Sakil Ahmed'}/>
+                <Avatar src={''} name={'Sakil Ahmed'}/>
+                <Avatar src={'https://avatars.githubusercontent.com/u/103986313?v=4'} name={'Sakil Ahmed'}/>
+                <Avatar src={''} name={'Sakil Ahmed'}/>
+            </AvatarGroup>
 
         </div>
     );

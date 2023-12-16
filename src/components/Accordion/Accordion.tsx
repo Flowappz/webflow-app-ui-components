@@ -1,24 +1,64 @@
-import {FC, ReactNode, useState} from "react";
+import React from 'react';
+import * as Accordion from '@radix-ui/react-accordion';
+
+import {ChevronDownIcon} from '@radix-ui/react-icons';
 import {cn} from "../../lib/utils";
-import {ArrowIcon} from "../../assets/icons";
 
-interface AccordionPops {
-    label: string,
-    icon?: ReactNode
-    className?: string
-    content?: string
-}
 
-export const Accordion: FC<AccordionPops> = ({label, className, icon = <ArrowIcon/>, content}) => {
+const AccordionRoot = React.forwardRef<React.ElementRef<typeof Accordion.Root>,
+    React.ComponentPropsWithoutRef<typeof Accordion.Root>>(({children, className, ...props}, forwardedRef) => (
 
-    const [isOpen, setIsOpen] = useState<boolean>(false)
+    <Accordion.Root
+        className={cn('', className)}
+        {...props}
+        ref={forwardedRef}
+    >
+        {children}
+    </Accordion.Root>
 
-    return <div className={cn('bg-background1 w-[240px]', className)}>
-        <button className={'w-full h-[32px] flex items-center gap-[10px] py-2 pl-2 pr-1'}
-                onClick={() => setIsOpen(prev => !prev)}>
-            <span className={'flex-1 text-start'}>{label}</span>
-            <span className={''}>{icon}</span>
-        </button>
-        <div className={`transition-all ${isOpen ?'h-fit':'h-0 opacity-0'} p-2`}>{content}</div>
-    </div>
-}
+));
+
+
+const AccordionItem = React.forwardRef<React.ElementRef<typeof Accordion.Item>,
+    React.ComponentPropsWithoutRef<typeof Accordion.Item>>(({children, className, ...props}, forwardedRef) => (
+
+    <Accordion.Item
+        className={cn('', className)}
+        {...props}
+        ref={forwardedRef}
+    >
+        {children}
+    </Accordion.Item>
+
+));
+
+
+const AccordionTrigger = React.forwardRef<React.ElementRef<typeof Accordion.Trigger>,
+    React.ComponentPropsWithoutRef<typeof Accordion.Trigger>>(({children, className, ...props}, forwardedRef) => (
+    <Accordion.Header className="AccordionHeader">
+        <Accordion.Trigger
+            className={cn('AccordionTrigger', className)}
+            {...props}
+            ref={forwardedRef}
+        >
+            {children}
+            <ChevronDownIcon className="AccordionChevron" aria-hidden/>
+        </Accordion.Trigger>
+    </Accordion.Header>
+));
+
+const AccordionContent = React.forwardRef<React.ElementRef<typeof Accordion.Content>,
+    React.ComponentPropsWithoutRef<typeof Accordion.Content>>(({children, className, ...props}, forwardedRef) => (
+    <Accordion.Content
+        className={cn('AccordionContent', className)}
+        {...props}
+        ref={forwardedRef}
+    >
+        <div className="AccordionContentText">{children}</div>
+    </Accordion.Content>
+));
+
+
+AccordionContent.displayName = 'AccordionContent'
+
+export {AccordionRoot,AccordionItem, AccordionTrigger, AccordionContent}
