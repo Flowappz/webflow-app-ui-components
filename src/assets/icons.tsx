@@ -118,3 +118,17 @@ export const EyedropperIcon = () => {
 }
 
 
+export const CheckmarkIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
+            <path d="M1.01465 3.5L3.01465 5.5L8.01465 0.5" stroke="white" strokeWidth="1.25"/>
+        </svg>
+    )
+}
+export const MinusIcon = () => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="2" viewBox="0 0 7 2" fill="none">
+            <path d="M0.514648 1H6.51465" stroke="white" strokeWidth="1.25"/>
+        </svg>
+    )
+}

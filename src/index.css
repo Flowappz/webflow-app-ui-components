@@ -180,26 +180,60 @@ body {
     width: 6px !important;
     margin: auto;
 }
-.react-colorful__hue-pointer, .react-colorful__alpha-pointer{
+
+.react-colorful__hue-pointer, .react-colorful__alpha-pointer {
     height: 14px !important;
     width: 12px !important;
     border-radius: 4px !important;
 }
-.react-colorful__hue-pointer .react-colorful__pointer-fill, .react-colorful__alpha-pointer .react-colorful__pointer-fill{
+
+.react-colorful__hue-pointer .react-colorful__pointer-fill, .react-colorful__alpha-pointer .react-colorful__pointer-fill {
     height: 6px !important;
     width: 4px !important;
     margin: auto;
     border-radius: 0 !important;
 }
-.react-colorful__alpha, .react-colorful__last-control{
+
+.react-colorful__alpha, .react-colorful__last-control {
     margin-top: 4px !important;
     border-radius: 2px !important;
     width: 184px !important;
     margin-left: auto !important;
 }
-.react-colorful__hue{
+
+.react-colorful__hue {
     margin-top: 8px !important;
     width: 184px !important;
     margin-left: auto !important;
 }
+
 /* Color Picker Style */
+
+
+/* Checkbox Style */
+
+.checkbox:has(.checkbox-input:checked) {
+    @apply bg-[#006ACC] border-[#006ACC]
+}
+
+.checkbox-input:checked ~ .checkmark {
+    opacity: 1 !important;
+}
+.checkbox:has(.checkbox-input:enabled:not(:checked)) {
+    @apply hover:bg-background2
+}
+
+.checkbox-input:indeterminate ~ .isIndeterminate {
+    opacity: 1 !important;
+}
+.checkbox:has(.checkbox-input:focus) {
+    @apply outline outline-1 outline-blueBorder
+}
+.checkbox:has(.checkbox-input:disabled) {
+    @apply opacity-[0.4] cursor-not-allowed
+}
+.checkbox-error:has(.checkbox-input:checked) {
+    @apply bg-redBackground border-redBackground
+}
+
+/* Checkbox Style */

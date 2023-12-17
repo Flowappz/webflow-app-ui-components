@@ -14,6 +14,7 @@ import {SelectInput} from "./components/SelectInput/SelectInput";
 
 import {Avatar} from "./components";
 import {AvatarGroup} from "./components/Avatar/Avatar";
+import {Checkbox} from "./components/CheckBox/Checkbox";
 
 
 const content = [
@@ -145,6 +146,17 @@ function App() {
                 <Avatar src={'https://avatars.githubusercontent.com/u/103986313?v=4'} name={'Sakil Ahmed'}/>
                 <Avatar src={''} name={'Sakil Ahmed'}/>
             </AvatarGroup>
+
+
+            <p>default</p>
+            <Checkbox checkboxId={'defaultcheckbox'}/>
+            <p>checked</p>
+            <Checkbox checkboxId={'checkbox2'} checked/>
+            <p>disabled</p>
+            <Checkbox checkboxId={'checkbox1'} disabled/>
+            <p>isError</p>
+            <Checkbox checkboxId={'checkbox3'} isError/>
+
 
         </div>
     );
