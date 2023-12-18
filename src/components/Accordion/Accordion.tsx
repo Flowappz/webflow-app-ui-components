@@ -1,64 +1,61 @@
-import React from 'react';
-import * as Accordion from '@radix-ui/react-accordion';
+"use client"
 
-import {ChevronDownIcon} from '@radix-ui/react-icons';
+import * as React from "react"
+import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { ChevronDown } from "lucide-react"
 import {cn} from "../../lib/utils";
 
 
-const AccordionRoot = React.forwardRef<React.ElementRef<typeof Accordion.Root>,
-    React.ComponentPropsWithoutRef<typeof Accordion.Root>>(({children, className, ...props}, forwardedRef) => (
 
-    <Accordion.Root
-        className={cn('', className)}
+const Accordion = AccordionPrimitive.Root
+
+const AccordionItem = React.forwardRef<
+    React.ElementRef<typeof AccordionPrimitive.Item>,
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
+>(({ className, ...props }, ref) => (
+    <AccordionPrimitive.Item
+        ref={ref}
+        className={cn("", className)}
         {...props}
-        ref={forwardedRef}
-    >
-        {children}
-    </Accordion.Root>
+    />
+))
+AccordionItem.displayName = "AccordionItem"
 
-));
-
-
-const AccordionItem = React.forwardRef<React.ElementRef<typeof Accordion.Item>,
-    React.ComponentPropsWithoutRef<typeof Accordion.Item>>(({children, className, ...props}, forwardedRef) => (
-
-    <Accordion.Item
-        className={cn('', className)}
-        {...props}
-        ref={forwardedRef}
-    >
-        {children}
-    </Accordion.Item>
-
-));
-
-
-const AccordionTrigger = React.forwardRef<React.ElementRef<typeof Accordion.Trigger>,
-    React.ComponentPropsWithoutRef<typeof Accordion.Trigger>>(({children, className, ...props}, forwardedRef) => (
-    <Accordion.Header className="AccordionHeader">
-        <Accordion.Trigger
-            className={cn('AccordionTrigger', className)}
+const AccordionTrigger = React.forwardRef<
+    React.ElementRef<typeof AccordionPrimitive.Trigger>,
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+    <AccordionPrimitive.Header className="flex bg-background1">
+        <AccordionPrimitive.Trigger
+            ref={ref}
+            className={cn(
+                "flex flex-1 items-center justify-between p-2 text-[12px] font-[600] transition-all [&[data-state=open]>svg]:-rotate-90",
+                className
+            )}
             {...props}
-            ref={forwardedRef}
         >
             {children}
-            <ChevronDownIcon className="AccordionChevron" aria-hidden/>
-        </Accordion.Trigger>
-    </Accordion.Header>
-));
+            <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+        </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+))
+AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
-const AccordionContent = React.forwardRef<React.ElementRef<typeof Accordion.Content>,
-    React.ComponentPropsWithoutRef<typeof Accordion.Content>>(({children, className, ...props}, forwardedRef) => (
-    <Accordion.Content
-        className={cn('AccordionContent', className)}
+const AccordionContent = React.forwardRef<
+    React.ElementRef<typeof AccordionPrimitive.Content>,
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+>(({ className, children, ...props }, ref) => (
+    <AccordionPrimitive.Content
+        ref={ref}
+        className={cn(
+            "overflow-hidden w-full text-[12px] p-2 transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+            className
+        )}
         {...props}
-        ref={forwardedRef}
     >
-        <div className="AccordionContentText">{children}</div>
-    </Accordion.Content>
-));
+        <div className="pb-4 pt-0">{children}</div>
+    </AccordionPrimitive.Content>
+))
+AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-
-AccordionContent.displayName = 'AccordionContent'
-
-export {AccordionRoot,AccordionItem, AccordionTrigger, AccordionContent}
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }

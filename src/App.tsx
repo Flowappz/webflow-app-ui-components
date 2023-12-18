@@ -15,6 +15,7 @@ import {SelectInput} from "./components/SelectInput/SelectInput";
 import {Avatar} from "./components";
 import {AvatarGroup} from "./components/Avatar/Avatar";
 import {Checkbox} from "./components/CheckBox/Checkbox";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "./components/Accordion/Accordion";
 
 
 const content = [
@@ -157,6 +158,24 @@ function App() {
             <p>isError</p>
             <Checkbox checkboxId={'checkbox3'} isError/>
 
+ <p>Accordion</p>
+            <div className={'w-[240px]'}>
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1" className={'mb-1'}>
+                        <AccordionTrigger>Section expanded</AccordionTrigger>
+                        <AccordionContent>
+                            Yes. It adheres to the WAI-ARIA design pattern.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                        <AccordionTrigger>Section collapsed</AccordionTrigger>
+                        <AccordionContent>
+                            Yes. It comes with default styles that matches the other
+                            components&apos; aesthetic.
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+            </div>
 
         </div>
     );
